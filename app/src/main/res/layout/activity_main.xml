@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <variable
+            name="clickHandler"
+            type="com.movieapp.movieapp.MainActivity.MainClickHandler" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="M"
+                android:gravity="center_vertical"
+                android:textColor="@color/yellow"
+                android:fontFamily="@font/rodrub"
+                android:textSize="50sp"/>
+
+            <TextView
+                android:id="@+id/main_privacy"
+                android:onClick="@{clickHandler::onPrivacyClick}"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:text="Privacy"
+                android:textAllCaps="true"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/main_help"
+                android:onClick="@{clickHandler::onHelpClick}"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="help"
+                android:textAllCaps="true"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/main_signIn"
+                android:onClick="@{clickHandler::onSignInClick}"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:text="sign in"
+                android:textAllCaps="true"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_weight="8"/>
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/main_tabLayout"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorGravity="center"
+            app:tabIndicatorHeight="0dp"
+            />
+
+        <TextView
+            android:id="@+id/main_getStarted"
+            android:onClick="@{clickHandler::onGetStartedClick}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:background="@color/yellow"
+            android:text="get started"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+</layout>

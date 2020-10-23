@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="userModel"
+            type="com.movieapp.movieapp.models.UsersModel" />
+        <variable
+            name="plansModel"
+            type="com.movieapp.movieapp.models.PlansModel" />
+        <variable
+            name="clickHandler"
+            type="com.movieapp.movieapp.GetStartedStageOne.GetStartedStageOneClickHandler" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/getStarted_container"
+        android:background="@color/gray"
+        android:padding="10dp"
+        android:orientation="vertical"
+        tools:context=".GetStartedStageOne">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{clickHandler::onBackClick}"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/ic_arrow"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text=""
+                android:gravity="center"
+                android:textColor="@color/yellow"
+                android:fontFamily="@font/rodrub"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:id="@+id/main_help"
+                android:onClick="@{clickHandler::onSignInClick}"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="help"
+                android:textAllCaps="true"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/main_signIn"
+                android:onClick="@{clickHandler::onSignInClick}"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:text="sign in"
+                android:textAllCaps="true"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/stageOne_page1_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/step_1_of_3"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:text="@string/choose_your_plan"
+                android:textSize="25sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="10dp"
+                android:text="@string/no_commitments_cancel_anytime"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="10dp"
+                android:text="@string/everything_for_one_low_price"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="10dp"
+                android:text="@string/unlimited_viewing_on_all_your_devices"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"/>
+
+            <Button
+                android:onClick="@{clickHandler::onSeeThePlansClick}"
+                android:background="@color/yellow"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:text="See the plans"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/stageOne_page2_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:text="@string/downgrade_or_upgrade_at_any_time"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/stageOne_page2_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/hd_and_ultra_hd_availability_subjevt_to_your_internet_service_and_device_capabilities_not_all_content_available_in_hd_or_ultra_hd_see_terms_of_use_for_more_details"
+                android:textSize="15sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/stageOne_page3_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:text="@string/you_re_getting_an_upgrade"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textColor="@color/white"/>
+
+            <pl.droidsonroids.gif.GifImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="70dp"
+                android:background="@drawable/gifpic"
+                />
+
+            <TextView
+                android:id="@+id/stageOne_page3_message"
+                android:text="@{plansModel.offerMessage}"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.6"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:id="@+id/stageOne_page3_recyclerView"
+                android:onClick="@{clickHandler::onStageOnePage3OkClick}"
+                android:background="@drawable/shadow_frame"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3">
+
+                <TextView
+                    android:text="@={plansModel.duration}"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".5"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/yellow"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".5">
+
+                    <TextView
+                        android:text="@={plansModel.priceBefore}"
+                        android:id="@+id/stageOne_page3_price_before"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".8"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:text="@={plansModel.priceAfter}"
+                        android:layout_marginStart="20dp"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/yellow"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <TextView
+                    android:text="@={plansModel.OfferType}"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".5"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/stageOne_page3_ok"
+                android:onClick="@{clickHandler::onStageOnePage3OkClick}"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:text="@string/ok_thanks"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/stageTwo_page1_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/step_2_of_3"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:text="@string/sign_up_to_start_your_membership"
+                android:textSize="25sp"
+                android:textColor="@color/white"/>
+
+            <EditText
+                android:id="@+id/stageTwo_page1_username"
+                android:text="@={userModel.username}"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/shadow_frame"
+                android:hint="@string/username"
+                android:paddingStart="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/stageTwo_page1_password"
+                android:text="@={userModel.password}"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shadow_frame"
+                android:hint="@string/password"
+                android:paddingStart="15dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/get_special_offers"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"/>
+
+            <Button
+                android:onClick="@{clickHandler::onSignupClick}"
+                android:background="@color/yellow"
+                android:layout_gravity="center_horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight=".7"
+                android:text="@string/continue_"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/stageTwo_page2_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/step_2_of_3"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.3"
+                android:text="@string/setup_your_payment"
+                android:textSize="25sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/your_membership_start_as_soon_as_you_set_up_payment"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="@string/no_commitments_cancel_online_at_anytime"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"/>
+
+            <TextView
+                android:onClick="@{clickHandler::onCreditCrdClick}"
+                android:text="@string/credit_or_debit_card"
+                android:singleLine="true"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:background="@color/yellow"
+                android:paddingStart="15dp"
+                android:textSize="15sp" />
+
+            <TextView
+                android:onClick="@{clickHandler::onPayPalClick}"
+                android:text="@string/paypal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:background="@color/yellow"
+                android:paddingStart="15dp"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/stageTwo_page3_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/step_3_of_3"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Setup your credit or debit card"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="70dp"
+                        android:background="@drawable/shadow_frame"
+                        android:padding="10dp"
+                        android:hint="@string/first_name"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="70dp"
+                        android:background="@drawable/shadow_frame"
+                        android:padding="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:hint="@string/last_name"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="70dp"
+                        android:background="@drawable/shadow_frame"
+                        android:padding="10dp"
+                        android:hint="@string/card_number"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="70dp"
+                        android:background="@drawable/shadow_frame"
+                        android:padding="10dp"
+                        android:layout_marginVertical="5dp"
+                        android:hint="@string/expiration_date_mm_yy"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="70dp"
+                        android:background="@drawable/shadow_frame"
+                        android:padding="10dp"
+                        android:hint="@string/security_code_cvv"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:hint="@string/agreement"
+                        android:textSize="16sp"
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        />
+
+                    <CheckBox
+                        android:text="I agree"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:paddingStart="15dp"
+                        android:textSize="15sp" />
+
+                    <Button
+                        android:text="@string/start_membership"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="5dp"
+                        android:textAllCaps="false"
+                        android:gravity="center"
+                        android:background="@color/yellow"
+                        android:paddingStart="15dp"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </ScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/stageTwo_page3_paypal_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/step_3_of_3"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/setup_your_paypal"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:background="@drawable/shadow_frame"
+                >
+
+                <TextView
+                    android:text="@={plansModel.offerType}"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:text="@{(plansModel.priceAfter != null?plansModel.priceAfter:plansModel.priceBefore)}"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    />
+
+                <TextView
+                    android:text="@string/change"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:padding="10dp"
+                android:layout_marginVertical="10dp"
+                android:hint="@string/finish_signup"
+                android:textSize="16sp"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                />
+
+            <Button
+                android:text="@string/continue_to_paypal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="5dp"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:background="@color/yellow"
+                android:paddingStart="15dp"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
