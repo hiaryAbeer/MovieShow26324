@@ -21,7 +21,7 @@ public class PlansRepository {
     private static PlansRepository instance;
     private JsonPlaceHolder placeHolder;
 
-    public PlansRepository() {
+    private PlansRepository() {
         placeHolder = RetrofitClass.createService(JsonPlaceHolder.class);
 
     }

@@ -56,36 +56,26 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         public void onLoginClick(View view) {
-//            usersViewModel = ViewModelProviders.of(LoginActivity.this).get(UsersViewModel.class);
-//            usersViewModel.initialization();
-//            usersViewModel.getUsersLiveData().observe(LoginActivity.this, response -> {
-//                usersModelList = response.getUsersModels();
-//                new ShareClass().showLog("LoginActivity", "onLoginClick", response.getUsersModels().get(0).getUsername());
-//
-//                if (usersModelList.get(0).getResponse() == 0)
-//                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, "You didn't have an account! Sign Up first", false);
-//                else
-//                    Toast.makeText(LoginActivity.this, "success", Toast.LENGTH_SHORT).show();
-////                    Intent intent = new Intent(LoginActivity.this, );
-//
-//
-//            });
-            if ((!TextUtils.isEmpty(usersModel.getUsername()) && !TextUtils.isEmpty(usersModel.getPassword())))
-                auth.signInWithEmailAndPassword(usersModel.getUsername(), usersModel.getPassword())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = auth.getCurrentUser();
-                                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, getString(R.string.authentication_success), true);
 
-                                } else
-                                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, getString(R.string.authentication_failed), false);
+//            if ((!TextUtils.isEmpty(usersModel.getUsername()) && !TextUtils.isEmpty(usersModel.getPassword())))
+//                auth.signInWithEmailAndPassword(usersModel.getUsername(), usersModel.getPassword())
+//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                if (task.isSuccessful()) {
+//                                    FirebaseUser user = auth.getCurrentUser();
+//                                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, getString(R.string.authentication_success), true);
 
-                            }
-                        });
-            else
-                Toast.makeText(LoginActivity.this, R.string.all_fields_are_required, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(LoginActivity.this, MoviesActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+//                                } else
+//                                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, getString(R.string.authentication_failed), false);
+//
+//                            }
+//                        });
+//            else
+//                Toast.makeText(LoginActivity.this, R.string.all_fields_are_required, Toast.LENGTH_SHORT).show();
         }
     }
 }

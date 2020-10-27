@@ -36,6 +36,6 @@ public class ShareClass {
     }
 
     public void showLog(String className, String method, String message){
-        Log.e("log" + className, method + " : " + message);
+        Log.e("log " + className, method + " : " + message);
     }
 }

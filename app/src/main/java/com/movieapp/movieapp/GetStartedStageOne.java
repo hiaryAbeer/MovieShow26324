@@ -204,6 +204,12 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 
         }
 
+        public void onStartMembershipClick(View view){
+            Intent intent = new Intent(GetStartedStageOne.this, MoviesActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+
         public void onBackClick(View view) {
             if (binding.stageTwoPage3PaypalLinear.getVisibility() == View.VISIBLE) {
                 binding.stageTwoPage3PaypalLinear.setVisibility(View.GONE);
