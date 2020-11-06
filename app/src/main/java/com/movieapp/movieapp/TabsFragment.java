@@ -1,7 +1,10 @@
 package com.movieapp.movieapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -24,6 +27,7 @@ import java.util.List;
 
 public class TabsFragment extends Fragment {
 
+    Activity activity;
     private static final String SECTION_NAME = "section_name";
     private static final String SECTION_ID = "section_id";
     private MovieGeners movieGenersModel = new MovieGeners();
@@ -51,6 +55,23 @@ public class TabsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        // TODO Auto-generated method stub
+        super.onAttach(activity);
+        this.activity=activity;
+    }
+
+//    @CallSuper
+//    public void onAttach(Context context) {
+//        mCalled = true;
+//        final Activity hostActivity = mHost == null ? null : mHost.getActivity();
+//        if (hostActivity != null) {
+//            mCalled = false;
+//            onAttach(hostActivity);
+//        }
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,7 +132,7 @@ public class TabsFragment extends Fragment {
             }
 
 
-            MoviesByGenresAdapter moviesAdapter = new MoviesByGenresAdapter(getContext(), byGenresModelList);
+            MoviesByGenresAdapter moviesAdapter = new MoviesByGenresAdapter(activity, byGenresModelList);
             recyclerView.setAdapter(moviesAdapter);
         });
 

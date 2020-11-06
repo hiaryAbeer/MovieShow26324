@@ -28,10 +28,17 @@ public class BaseData {
         return movieGeners;
     }
 
-    //    @SerializedName("plans_result")
-//    private String response;
+    @SerializedName("cast")
+    private List<CastModel> movieCast;
+
+    public List<CastModel> getMovieCast() {
+        return movieCast;
+    }
+
+//    @SerializedName("results")
+//    private List<MovieVideoModel> videoModels;
 //
-//    public String getResponse() {
-//        return response;
+//    public List<MovieVideoModel> getVideoModels() {
+//        return videoModels;
 //    }
 }

@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MoviesActivity"></activity>
+        <activity android:name=".PlayMovie" android:screenOrientation="sensorPortrait"/>
+        <activity
+            android:name=".MovieDetails"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".MoviesActivity"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".GetStartedStageOne"
             android:screenOrientation="sensorPortrait" />

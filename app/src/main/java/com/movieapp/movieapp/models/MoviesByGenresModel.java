@@ -2,9 +2,10 @@ package com.movieapp.movieapp.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class MoviesByGenresModel {
+public class MoviesByGenresModel implements Serializable {
 //    {
 //        "page": 1,
 //            "total_results": 10000,
