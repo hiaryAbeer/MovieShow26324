@@ -169,15 +169,15 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
                                                 if (task.isSuccessful()) {
-                                                    new ShareClass(GetStartedStageOne.this).showSnackbar(binding.getStartedContainer, getString(R.string.registered_successfully), true);
+                                                    ShareClass.getInstance().showSnackbar(GetStartedStageOne.this, binding.getStartedContainer, getString(R.string.registered_successfully), true);
                                                     binding.stageTwoPage1Linear.setVisibility(View.GONE);
                                                     binding.stageTwoPage2Linear.setVisibility(View.VISIBLE);
                                                 } else
-                                                    new ShareClass(GetStartedStageOne.this).showSnackbar(binding.getStartedContainer, getString(R.string.register_failed), false);
+                                                    ShareClass.getInstance().showSnackbar(GetStartedStageOne.this, binding.getStartedContainer, getString(R.string.register_failed), false);
                                             }
                                         });
                                     } else {
-                                        new ShareClass(GetStartedStageOne.this).showSnackbar(binding.getStartedContainer, getString(R.string.you_already_registered), false);
+                                        ShareClass.getInstance().showSnackbar(GetStartedStageOne.this, binding.getStartedContainer, getString(R.string.you_already_registered), false);
 
                                     }
                                 }
@@ -204,7 +204,7 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 
         }
 
-        public void onStartMembershipClick(View view){
+        public void onStartMembershipClick(View view) {
             Intent intent = new Intent(GetStartedStageOne.this, MoviesActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

@@ -76,6 +76,16 @@ public class MoviesByGenresModel implements Serializable {
     @SerializedName("release_date")
     private String release_date;
 
+    private boolean like = false;
+
+    public boolean isLike() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
+    }
+
     public double getPopularity() {
         return popularity;
     }

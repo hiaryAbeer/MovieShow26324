@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.movieapp.movieapp.ViewModel.CastViewModel;
@@ -37,6 +38,7 @@ public class MovieDetails extends AppCompatActivity {
     public static final String MOVIE_ID = "10";
     private MovieVideoViewModel videoViewModel;
     private long videoId = 0;
+    private ImageView like;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class MovieDetails extends AppCompatActivity {
         view = findViewById(R.id.details_simpleDraweeView);
         Uri uri = Uri.parse(IMAGE_URL + model.getPoster_path());
         view.setImageURI(uri);
+
+        like = findViewById(R.id.movie_detail_like);
 
         getMovieCast(model.getId());
 
@@ -79,6 +83,16 @@ public class MovieDetails extends AppCompatActivity {
         }
 
         public void onLikeClick(View view) {
+            if (ShareClass.getUsersModel() != null) {
+                if (model.isLike()) {
+                    like.setImageResource(R.drawable.ic_baseline_favorite_border);
+                    model.setLike(false);
+                } else {
+                    like.setImageResource(R.drawable.ic_baseline_favorite);
+                    model.setLike(true);
+                }
+
+            }
 
         }
 

@@ -61,4 +61,17 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        binding.mainViewPager.setAdapter(new StartingPagerAdapter(this));
+
+        TabLayoutMediator mediator = new TabLayoutMediator(binding.mainTabLayout, binding.mainViewPager
+                , new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+            }
+        });
+        mediator.attach();
+    }
 }

@@ -37,7 +37,14 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight=".5"/>
+
+        <ImageView
+            android:background="@drawable/movieshow_word"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="50dp"/>
 
         <EditText
             android:text="@={userModel.username}"
@@ -80,6 +87,7 @@
             />
 
         <TextView
+            android:onClick="@{clickHandler::onHelpClick}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".3"
@@ -90,6 +98,7 @@
             />
 
         <TextView
+            android:onClick="@{clickHandler::onSignUpClick}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".4"

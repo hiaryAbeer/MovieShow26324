@@ -11,6 +11,13 @@ public class UsersModel extends BaseObservable {
     private String password;
     private int response;
 
+    public UsersModel() {
+    }
+
+    public UsersModel(String username) {
+        this.username = username;
+    }
+
     public int getResponse() {
         return response;
     }

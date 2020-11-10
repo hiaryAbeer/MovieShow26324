@@ -8,6 +8,7 @@
         android:id="@+id/raw_cast_image"
         android:layout_width="90dp"
         android:layout_height="76dp"
+        android:background="@drawable/circle_raw_13"
         app:roundedCornerRadius="12dp"
         app:roundBottomRight="false"
         app:roundBottomLeft="false"

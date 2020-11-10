@@ -6,21 +6,22 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.movieapp.movieapp.models.UsersModel;
 
 import androidx.core.text.HtmlCompat;
 
 public class ShareClass {
+    private static ShareClass shareClass;
     private Snackbar snackbar;
-    private Context context;
+    private static UsersModel usersModel;
 
-    public ShareClass(Context context) {
-        this.context = context;
+    public static ShareClass getInstance() {
+        if (shareClass == null)
+            shareClass = new ShareClass();
+        return shareClass;
     }
 
-    public ShareClass() {
-    }
-
-    public void showSnackbar(View view, String message, boolean isIconDone) {
+    public void showSnackbar(Context context, View view, String message, boolean isIconDone) {
         snackbar = Snackbar.make(view, HtmlCompat.fromHtml("<font color=\"#ffffff\">" + message + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)
                 , Snackbar.LENGTH_SHORT);
         View view1 = snackbar.getView();
@@ -35,7 +36,16 @@ public class ShareClass {
 
     }
 
-    public void showLog(String className, String method, String message){
+    public void showLog(String className, String method, String message) {
         Log.e("log " + className, method + " : " + message);
     }
+
+    public static UsersModel getUsersModel() {
+        return usersModel;
+    }
+
+    public static void setUsersModel(UsersModel usersModel) {
+        ShareClass.usersModel = usersModel;
+    }
+
 }

@@ -56,26 +56,39 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         public void onLoginClick(View view) {
+            // abeer@ex.com
+            if ((!TextUtils.isEmpty(usersModel.getUsername()) && !TextUtils.isEmpty(usersModel.getPassword())))
+                auth.signInWithEmailAndPassword(usersModel.getUsername(), usersModel.getPassword())
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = auth.getCurrentUser();
+                                     ShareClass.getInstance().showSnackbar(LoginActivity.this,binding.container, getString(R.string.authentication_success), true);
 
-//            if ((!TextUtils.isEmpty(usersModel.getUsername()) && !TextUtils.isEmpty(usersModel.getPassword())))
-//                auth.signInWithEmailAndPassword(usersModel.getUsername(), usersModel.getPassword())
-//                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<AuthResult> task) {
-//                                if (task.isSuccessful()) {
-//                                    FirebaseUser user = auth.getCurrentUser();
-//                                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, getString(R.string.authentication_success), true);
-
+                                    ShareClass.setUsersModel(new UsersModel(user.getEmail()));
                                     Intent intent = new Intent(LoginActivity.this, MoviesActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
-//                                } else
-//                                    new ShareClass(LoginActivity.this).showSnackbar(binding.container, getString(R.string.authentication_failed), false);
-//
-//                            }
-//                        });
-//            else
-//                Toast.makeText(LoginActivity.this, R.string.all_fields_are_required, Toast.LENGTH_SHORT).show();
+                                } else
+                                    ShareClass.getInstance().showSnackbar(LoginActivity.this,binding.container, getString(R.string.authentication_failed), false);
+
+                            }
+                        });
+            else
+                Toast.makeText(LoginActivity.this, R.string.all_fields_are_required, Toast.LENGTH_SHORT).show();
+        }
+
+        public void onSignUpClick(View view){
+            Intent intent = new Intent(LoginActivity.this, GetStartedStageOne.class);
+            startActivity(intent);
+
+        }
+
+        public void onHelpClick(View view){
+            Intent intent = new Intent(LoginActivity.this, HelpPage.class);
+            startActivity(intent);
+
         }
     }
 }
