@@ -74,7 +74,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/stageOne_page1_linear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -369,6 +369,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".5"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginVertical="10dp"
                     android:layout_marginHorizontal="5dp"
                     android:background="@drawable/ic_baseline_eye"
@@ -632,7 +633,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/stageTwo_page3_paypal_linear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

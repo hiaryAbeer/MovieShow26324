@@ -46,6 +46,7 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
     private PlansModel plansModel;
     private UsersModel usersModel;
     private FirebaseAuth auth;
+    private boolean change = false;
 
 
     @Override
@@ -95,7 +96,7 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 //    }
 
     public class GetStartedStageOneClickHandler {
-        public void onHelpClick(View view){
+        public void onHelpClick(View view) {
             Intent intent = new Intent(GetStartedStageOne.this, HelpPage.class);
             startActivity(intent);
 
@@ -141,7 +142,10 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
                                         binding.stageOnePage3PriceBefore.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
                                     } else {
                                         plansModel.setPriceAfter(null);
-                                        binding.stageTwoPage1Linear.setVisibility(View.VISIBLE);
+                                        if (change)
+                                            binding.stageTwoPage2Linear.setVisibility(View.VISIBLE);
+                                        else
+                                            binding.stageTwoPage1Linear.setVisibility(View.VISIBLE);
                                     }
 
 
@@ -160,7 +164,10 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 
         public void onStageOnePage3OkClick(View view) {
             binding.stageOnePage3Linear.setVisibility(View.GONE);
-            binding.stageTwoPage1Linear.setVisibility(View.VISIBLE);
+            if (change)
+                binding.stageTwoPage2Linear.setVisibility(View.VISIBLE);
+            else
+                binding.stageTwoPage1Linear.setVisibility(View.VISIBLE);
         }
 
         public void onSignupClick(View view) {
@@ -199,11 +206,11 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 
         }
 
-        public void onEyeClick(View view){
-            if (binding.stageTwoPage1Password.getTransformationMethod() == PasswordTransformationMethod.getInstance()){
+        public void onEyeClick(View view) {
+            if (binding.stageTwoPage1Password.getTransformationMethod() == PasswordTransformationMethod.getInstance()) {
                 binding.stageTwoPage1Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 binding.loginEye.setImageResource(R.drawable.invisiblee);
-            }else {
+            } else {
                 binding.stageTwoPage1Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 binding.loginEye.setImageResource(R.drawable.ic_baseline_eye);
 
@@ -231,12 +238,13 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
         }
 
         public void onChangePlanClick(View view) {
+            change = true;
             binding.stageTwoPage3Linear.setVisibility(View.GONE);
             binding.stageOnePage2Linear.setVisibility(View.VISIBLE);
 
         }
 
-            public void onBackClick(View view) {
+        public void onBackClick(View view) {
             if (binding.stageTwoPage3PaypalLinear.getVisibility() == View.VISIBLE) {
                 binding.stageTwoPage3PaypalLinear.setVisibility(View.GONE);
                 binding.stageTwoPage2Linear.setVisibility(View.VISIBLE);
