@@ -6,9 +6,9 @@ public class FragmentModel {
 
     private String title;
     private String text;
-    private Drawable image;
+    private int image;
 
-    public FragmentModel(String title, String text, Drawable image) {
+    public FragmentModel(String title, String text, int image) {
         this.title = title;
         this.text = text;
         this.image = image;
@@ -30,11 +30,11 @@ public class FragmentModel {
         this.text = text;
     }
 
-    public Drawable getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(Drawable image) {
+    public void setImage(int image) {
         this.image = image;
     }
 }

@@ -1,5 +1,6 @@
 package com.movieapp.movieapp;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -30,16 +31,16 @@ public class DevicesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//int sdf=  R.drawable.gifpic;
         switch (pageFlag){
             case 1:
-                fragmentModel = new FragmentModel(getString(R.string.devices_hint), getString(R.string.devices_message), getResources().getDrawable(R.drawable.devices));
+                fragmentModel = new FragmentModel(getString(R.string.devices_hint), getString(R.string.devices_message),R.drawable.devices1);
                 break;
             case 2:
-                fragmentModel = new FragmentModel(getString(R.string.contract_title), getString(R.string.contract_message), getResources().getDrawable(R.drawable.no_contract));
+                fragmentModel = new FragmentModel(getString(R.string.contract_title), getString(R.string.contract_message), R.drawable.contract);
                 break;
             case 3:
-                fragmentModel = new FragmentModel(getString(R.string.movies_title),getString(R.string.movies_message), getResources().getDrawable(R.drawable.movies));
+                fragmentModel = new FragmentModel(getString(R.string.movies_title),getString(R.string.movies_message), R.drawable.family);
                 break;
 
         }

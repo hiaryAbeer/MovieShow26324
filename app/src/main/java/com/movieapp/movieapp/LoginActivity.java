@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.setClickHandler(handler);
         binding.setUserModel(usersModel);
+        binding.loginPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
     }
 
     public class LoginClickHandler {
@@ -64,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = auth.getCurrentUser();
-                                     ShareClass.getInstance().showSnackbar(LoginActivity.this,binding.container, getString(R.string.authentication_success), true);
+                                    ShareClass.getInstance().showSnackbar(LoginActivity.this,binding.container, getString(R.string.authentication_success), true);
 
                                     ShareClass.setUsersModel(new UsersModel(user.getEmail()));
                                     Intent intent = new Intent(LoginActivity.this, MoviesActivity.class);
@@ -88,6 +92,18 @@ public class LoginActivity extends AppCompatActivity {
         public void onHelpClick(View view){
             Intent intent = new Intent(LoginActivity.this, HelpPage.class);
             startActivity(intent);
+
+        }
+
+        public void onEyeClick(View view){
+            if (binding.loginPassword.getTransformationMethod() == PasswordTransformationMethod.getInstance()){
+                binding.loginPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                binding.loginEye.setImageResource(R.drawable.invisiblee);
+            }else {
+                binding.loginPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                binding.loginEye.setImageResource(R.drawable.ic_baseline_eye);
+
+            }
 
         }
     }

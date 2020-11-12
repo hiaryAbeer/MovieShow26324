@@ -1,6 +1,7 @@
 package com.movieapp.movieapp;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -9,6 +10,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.movieapp.movieapp.models.UsersModel;
 
 import androidx.core.text.HtmlCompat;
+import androidx.databinding.BindingAdapter;
+import pl.droidsonroids.gif.GifImageView;
 
 public class ShareClass {
     private static ShareClass shareClass;
@@ -46,6 +49,13 @@ public class ShareClass {
 
     public static void setUsersModel(UsersModel usersModel) {
         ShareClass.usersModel = usersModel;
+    }
+
+    @BindingAdapter({"imageUrl"})
+    public static void loadImage( GifImageView view, int image) {
+
+        view.setImageResource(image);
+
     }
 
 }

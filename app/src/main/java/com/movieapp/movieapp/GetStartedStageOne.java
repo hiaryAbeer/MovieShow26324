@@ -12,6 +12,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -68,7 +70,7 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please waiting..");
-
+        binding.stageTwoPage1Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
     }
 
@@ -93,6 +95,12 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 //    }
 
     public class GetStartedStageOneClickHandler {
+        public void onHelpClick(View view){
+            Intent intent = new Intent(GetStartedStageOne.this, HelpPage.class);
+            startActivity(intent);
+
+        }
+
         public void onSignInClick(View view) {
             Intent intent = new Intent(GetStartedStageOne.this, LoginActivity.class);
             startActivity(intent);
@@ -191,6 +199,18 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
 
         }
 
+        public void onEyeClick(View view){
+            if (binding.stageTwoPage1Password.getTransformationMethod() == PasswordTransformationMethod.getInstance()){
+                binding.stageTwoPage1Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                binding.loginEye.setImageResource(R.drawable.invisiblee);
+            }else {
+                binding.stageTwoPage1Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                binding.loginEye.setImageResource(R.drawable.ic_baseline_eye);
+
+            }
+
+        }
+
         public void onCreditCrdClick(View view) {
             binding.stageTwoPage2Linear.setVisibility(View.GONE);
             binding.stageTwoPage3Linear.setVisibility(View.VISIBLE);
@@ -210,7 +230,13 @@ public class GetStartedStageOne extends AppCompatActivity {//implements Recycler
             startActivity(intent);
         }
 
-        public void onBackClick(View view) {
+        public void onChangePlanClick(View view) {
+            binding.stageTwoPage3Linear.setVisibility(View.GONE);
+            binding.stageOnePage2Linear.setVisibility(View.VISIBLE);
+
+        }
+
+            public void onBackClick(View view) {
             if (binding.stageTwoPage3PaypalLinear.getVisibility() == View.VISIBLE) {
                 binding.stageTwoPage3PaypalLinear.setVisibility(View.GONE);
                 binding.stageTwoPage2Linear.setVisibility(View.VISIBLE);
